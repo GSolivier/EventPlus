@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jScyPrXsqEisCuC7gOhYa7nI0WeXG5FKDgfhxsOcnNc=",
+  "Source": "eventplus_webapi",
+  "BasePath": "_content/eventplus_webapi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
