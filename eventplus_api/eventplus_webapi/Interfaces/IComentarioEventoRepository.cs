@@ -5,7 +5,7 @@ namespace eventplus_webapi.Interfaces
     /// <summary>
     /// Interface que define os métodos da entidade ComentarioEvento
     /// </summary>
-    public interface IComentarioEvento
+    public interface IComentarioEventoRepository
     {
         /// <summary>
         /// Método para cadastrar um novo comentário

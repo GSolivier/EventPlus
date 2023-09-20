@@ -5,7 +5,7 @@ namespace eventplus_webapi.Interfaces
     /// <summary>
     /// Interface que é responsável por definir os métodos da entidade Evento
     /// </summary>
-    public interface IEvento
+    public interface IEventoRepository
     {
         /// <summary>
         /// Método de cadastro de um novo evento

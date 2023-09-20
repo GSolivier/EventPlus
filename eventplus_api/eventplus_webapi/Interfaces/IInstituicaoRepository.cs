@@ -5,7 +5,7 @@ namespace eventplus_webapi.Interfaces
     /// <summary>
     /// Interface responsável pelos métodos da entidade Instituição
     /// </summary>
-    public interface IInstituicao
+    public interface IInstituicaoRepository
     {
         /// <summary>
         /// Método para cadastrar uma nova instituição no sistema

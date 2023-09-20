@@ -4,6 +4,205 @@
         <name>eventplus_webapi</name>
     </assembly>
     <members>
+        <member name="T:eventplus_webapi.Domains.ComentarioEvento">
+            <summary>
+            Domain que representa a entidade ComentarioEvento
+            </summary>
+        </member>
+        <member name="T:eventplus_webapi.Domains.Evento">
+            <summary>
+            Domain que representa a entidade Evento
+            </summary>
+        </member>
+        <member name="T:eventplus_webapi.Domains.Instituicao">
+            <summary>
+            Domain que representa a entidade Instituicao
+            </summary>
+        </member>
+        <member name="T:eventplus_webapi.Domains.PresencasEvento">
+            <summary>
+            Domain que representa a entidade PresencasEvento
+            </summary>
+        </member>
+        <member name="T:eventplus_webapi.Domains.TiposEvento">
+            <summary>
+            Domain que representa a entidade TiposEvento
+            </summary>
+        </member>
+        <member name="T:eventplus_webapi.Domains.TiposUsuario">
+            <summary>
+            Domain que representa a entidade TiposUsuario
+            </summary>
+        </member>
+        <member name="T:eventplus_webapi.Domains.Usuario">
+            <summary>
+            Domain que representa a entidade Usuario
+            </summary>
+        </member>
+        <member name="T:eventplus_webapi.Interfaces.IComentarioEventoRepository">
+            <summary>
+            Interface que define os métodos da entidade ComentarioEvento
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IComentarioEventoRepository.Cadastrar(eventplus_webapi.Domains.ComentarioEvento)">
+            <summary>
+            Método para cadastrar um novo comentário
+            </summary>
+            <param name="comentarioEvento">Objeto com os valores a serem cadastrados</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IComentarioEventoRepository.Listar(System.Guid)">
+            <summary>
+            Método para listar todos os comentários daquele evento
+            </summary>
+            <returns> Retorna a lista dos comentários</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IComentarioEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar um comentário existente
+            </summary>
+            <param name="id"> ID do comentário que será deletado </param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IComentarioEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um comentário por ID
+            </summary>
+            <param name="id">ID do comentário que será buscado</param>
+            <returns>Retorna o objeto com o comentário buscado</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IComentarioEventoRepository.ListarPorUsuario(System.Guid)">
+            <summary>
+            Lista todos os comentários de um determindado usuário
+            </summary>
+            <param name="idUsuario">Id do usuário que terá os seus comentários listados</param>
+            <returns>Uma lista com os comentários do usuário</returns>
+        </member>
+        <member name="T:eventplus_webapi.Interfaces.IEventoRepository">
+            <summary>
+            Interface que é responsável por definir os métodos da entidade Evento
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IEventoRepository.Cadastrar(eventplus_webapi.Domains.Evento)">
+            <summary>
+            Método de cadastro de um novo evento
+            </summary>
+            <param name="evento">Objeto que terá os dados a serem adicionados</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Método que exclui um Evento Existente
+            </summary>
+            <param name="id">ID do evento que será deletado</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IEventoRepository.Listar">
+            <summary>
+            Método para listar todos os eventos
+            </summary>
+            <returns>Retorna a lista de todos os eventos</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um evento pelo seu ID
+            </summary>
+            <param name="id">ID do evento que será buscado</param>
+            <returns>retorna o evento buscado</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IEventoRepository.Atualizar(System.Guid,eventplus_webapi.Domains.Evento)">
+            <summary>
+            Método para atualizar um evento existente
+            </summary>
+            <param name="id">ID do evento que será atualizado</param>
+            <param name="evento">Objeto com as novas informações a serem inseridas</param>
+        </member>
+        <member name="T:eventplus_webapi.Interfaces.IInstituicaoRepository">
+            <summary>
+            Interface responsável pelos métodos da entidade Instituição
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IInstituicaoRepository.Cadastrar(eventplus_webapi.Domains.Instituicao)">
+            <summary>
+            Método para cadastrar uma nova instituição no sistema
+            </summary>
+            <param name="instituicao">Objeto com os valores a serem cadastrados</param>
+        </member>
+        <member name="T:eventplus_webapi.Interfaces.IPresencasEventoRepository">
+            <summary>
+            Interface que define os métodos da entidade PresencasEvento
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IPresencasEventoRepository.Cadastrar(eventplus_webapi.Domains.PresencasEvento)">
+            <summary>
+            Método responsável por cadastrar uma nova Presença
+            </summary>
+            <param name="presencasEvento">Objeto com os atributos a serem cadastrados</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IPresencasEventoRepository.Listar">
+            <summary>
+            Método responsável por listar todas as presenças
+            </summary>
+            <returns>Retorna uma lista com todas as presenças</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IPresencasEventoRepository.Atualizar(System.Guid,eventplus_webapi.Domains.PresencasEvento)">
+            <summary>
+            Método responsável por atualizar uma presença
+            </summary>
+            <param name="id">ID da presença que será atualizada</param>
+            <param name="presencasEvento">objeto com os novos valores a serem adicionados</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IPresencasEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Método que é responsável por deletar
+            </summary>
+            <param name="id">ID da presença que será deletada</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IPresencasEventoRepository.ListarPresencasUser(System.Guid)">
+            <summary>
+            Método responsável por listar as presenças de um determinado usuário
+            </summary>
+            <param name="idUsuario">As presenças serão buscadas a partir do ID do usuário</param>
+            <returns>Retorna a lista filtrada</returns>
+        </member>
+        <member name="T:eventplus_webapi.Interfaces.ITiposEventoRepository">
+            <summary>
+            Interface responsável por definir os métodos da entidade TiposEvento
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposEventoRepository.Cadastrar(eventplus_webapi.Domains.TiposEvento)">
+            <summary>
+            Método responsável por cadastrar um novo tipo de evento
+            </summary>
+            <param name="tipoEvento">Objeto com os atributos que serão cadastrados</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Método responsável por deletar um tipo de evento
+            </summary>
+            <param name="id">ID do tipo de evento que será deletado</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposEventoRepository.Listar">
+            <summary>
+            Método responsável por listar todos os tipos de eventos
+            </summary>
+            <returns>Retorna a lista com todos os tipos de eventos</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método responsável por buscar um tipo de evento por seu ID
+            </summary>
+            <param name="id">ID do tipo de evento que será buscado</param>
+            <returns>retorna o objeto encontrado</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposEventoRepository.Atualizar(System.Guid,eventplus_webapi.Domains.TiposEvento)">
+            <summary>
+            Método responsável por atualizar um tipo de evento existente
+            </summary>
+            <param name="id">ID do tipo de evento que será atualizado</param>
+            <param name="tipoEvento">objeto com os novos dados para atualizar</param>
+        </member>
+        <member name="T:eventplus_webapi.Interfaces.ITiposUsuarioRepository">
+            <summary>
+            Interface responsável pelos métodos da entidade Tipos
+            </summary>
+        </member>
         <member name="T:eventplus_webapi.Migrations.BD_v1">
             <inheritdoc />
         </member>
