@@ -2,6 +2,7 @@
 using eventplus_webapi.Interfaces;
 using eventplus_webapi.Repositories;
 using eventplus_webapi.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,8 +19,30 @@ namespace eventplus_webapi.Controllers
         {
             _usuarioRepository = new UsuarioRepository();
         }
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Administrador")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                Usuario usuarioBuscado = _usuarioRepository.BuscarPorId(id);
+
+                if (usuarioBuscado == null)
+                {
+                    return NotFound("Usuario não encontrado");
+                }
+
+                return Ok(usuarioBuscado);
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
 
         [HttpPost]
+        [Authorize(Roles = "Administrador, Aluno")]
         public IActionResult Post(Usuario usuario)
         {
             try

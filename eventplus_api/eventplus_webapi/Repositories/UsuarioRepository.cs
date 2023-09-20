@@ -20,7 +20,21 @@ namespace eventplus_webapi.Repositories
         {
             try
             {
-                Usuario usuarioBuscado = _eventContext.Usuario.FirstOrDefault(u => u.Email == email)!;
+                Usuario usuarioBuscado = _eventContext.Usuario
+                     .Select(u => new Usuario
+                     {
+                         IdUsuario = u.IdUsuario,
+                         IdTipoUsuario = u.IdTipoUsuario,
+                         Nome = u.Nome,
+                         Email = u.Email,
+                         Senha = u.Senha,
+                         TiposUsuario = new TiposUsuario
+                         {
+                             Titulo = u.TiposUsuario!.Titulo
+                         }
+                     }).FirstOrDefault(u => u.Email == email)!;
+
+
 
                 if (usuarioBuscado != null)
                 {
