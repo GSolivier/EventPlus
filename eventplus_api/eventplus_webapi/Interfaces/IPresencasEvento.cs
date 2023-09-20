@@ -12,6 +12,6 @@ namespace eventplus_webapi.Interfaces
 
         void Deletar(Guid id);
 
-        List<PresencasEvento> ListarMinhas();
+        List<PresencasEvento> ListarMinhas(Guid idPresencasEvento, Guid idPresecasUser);
     }
 }

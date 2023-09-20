@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eventplus_webapi.Domains
 {
+    /// <summary>
+    /// Domain que representa a entidade TiposEvento
+    /// </summary>
     [Table(nameof(TiposEvento))]
     public class TiposEvento
     {

@@ -38,13 +38,12 @@ namespace eventplus_webapi.Controllers
                 var claims = new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioEncontrado.IdUsuario.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Jti, usuarioEncontrado.Nome.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Jti, usuarioEncontrado.IdTipoUsuario.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Jti, usuarioEncontrado.Email!),
+                    new Claim(JwtRegisteredClaimNames.Name, usuarioEncontrado.Nome.ToString()),
+                    new Claim(JwtRegisteredClaimNames.Email, usuarioEncontrado.Email!),
                     new Claim(ClaimTypes.Role, usuarioEncontrado.TiposUsuario!.Titulo!)
                 };
 
-                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("senai-eventplus-chave-autenticacao-webapi-dev"));
+                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("senai-eventplus-chave-autenticacao-webapi"));
 
                 var credential = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

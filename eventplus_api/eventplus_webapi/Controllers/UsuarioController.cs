@@ -19,8 +19,9 @@ namespace eventplus_webapi.Controllers
         {
             _usuarioRepository = new UsuarioRepository();
         }
+
         [HttpGet("{id}")]
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Adm")]
         public IActionResult GetById(Guid id)
         {
             try
@@ -42,7 +43,7 @@ namespace eventplus_webapi.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrador, Aluno")]
+        //[Authorize(Roles = "Administrador, Aluno")]
         public IActionResult Post(Usuario usuario)
         {
             try

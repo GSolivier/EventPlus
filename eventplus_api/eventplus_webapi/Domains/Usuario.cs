@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eventplus_webapi.Domains
 {
+    /// <summary>
+    /// Domain que representa a entidade Usuario
+    /// </summary>
     [Table(nameof(Usuario))]
     [Index(nameof(Email), IsUnique = true)]
     public class Usuario

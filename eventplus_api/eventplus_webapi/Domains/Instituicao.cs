@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eventplus_webapi.Domains
 {
+    /// <summary>
+    /// Domain que representa a entidade Instituicao
+    /// </summary>
     [Table(nameof(Instituicao))]
     [Index(nameof(CNPJ), IsUnique = true)]
     public class Instituicao
