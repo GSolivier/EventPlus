@@ -32,7 +32,6 @@ namespace eventplus_webapi.Controllers
         /// <param name="id">ID do usuário que será buscado</param>
         /// <returns>Retorna um StatusCode(200) - OK com o objeto encontrado</returns>
         [HttpGet("{id}")]
-        [Authorize(Roles = "Administrador")]
         public IActionResult GetById(Guid id)
         {
             try
@@ -59,7 +58,6 @@ namespace eventplus_webapi.Controllers
         /// <param name="usuario">Objeto com os atributos que serão cadastrados</param>
         /// <returns>Retorna um Status Code 201 - Created</returns>
         [HttpPost]
-        [Authorize(Roles = "Administrador, Aluno")]
         public IActionResult Post(Usuario usuario)
         {
             try

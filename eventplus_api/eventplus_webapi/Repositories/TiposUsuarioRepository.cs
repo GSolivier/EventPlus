@@ -78,12 +78,31 @@ namespace eventplus_webapi.Repositories
             }
         }
 
-
+        /// <summary>
+        /// Método responsável por deletar um tipo de usuário
+        /// </summary>
+        /// <param name="id">ID do tipo de usuário que será deletado</param>
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                TiposUsuario tipoUsuarioBuscado = BuscarPorId(id);
+
+                _eventContext.TiposUsuario.Remove(tipoUsuarioBuscado);
+
+                _eventContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
+        /// <summary>
+        /// Método responsável por buscar um tipo de usuário pelo seu ID
+        /// </summary>
+        /// <param name="id">ID do tipo do usuário que sera´buscado</param>
+        /// <returns>retorna o objeto encontrado</returns>
         public TiposUsuario BuscarPorId(Guid id)
         {
             try

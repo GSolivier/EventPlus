@@ -39,7 +39,7 @@ namespace eventplus_webapi.Controllers
         {
             try
             {
-                Usuario usuarioEncontrado = _usuarioRepository.BuscarPorEmailESenha(usuario.Email, usuario.Senha);
+                Usuario usuarioEncontrado = _usuarioRepository.BuscarPorEmailESenha(usuario.Email!, usuario.Senha!);
 
                 if (usuarioEncontrado == null)
                 {
@@ -49,7 +49,7 @@ namespace eventplus_webapi.Controllers
                 var claims = new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioEncontrado.IdUsuario.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Name, usuarioEncontrado.Nome.ToString()),
+                    new Claim(JwtRegisteredClaimNames.Name, usuarioEncontrado.Nome!.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, usuarioEncontrado.Email!),
                     new Claim(ClaimTypes.Role, usuarioEncontrado.TiposUsuario!.Titulo!)
                 };

@@ -6,16 +6,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eventplus_webapi.Repositories
 {
+    /// <summary>
+    /// Repositório que define a ógica dos métodos implementados pela Interface IUsuarioRepository
+    /// </summary>
     public class UsuarioRepository : IUsuarioRepository
     {
         private readonly EventContext _eventContext;
 
+        /// <summary>
+        /// Construtor que instancia o objeto
+        /// </summary>
         public UsuarioRepository()
         {
             _eventContext = new EventContext();
         }
-        
 
+        /// <summary>
+        /// Método responsável por buscar um usuário pelo seu email e senha
+        /// </summary>
+        /// <param name="email">email que será fornecido pelo usuário</param>
+        /// <param name="senha">senha que será fornecida pelo usuário</param>
+        /// <returns>retorna o objeto encontrado</returns>
         public Usuario BuscarPorEmailESenha(string email, string senha)
         {
             try
@@ -34,11 +45,9 @@ namespace eventplus_webapi.Repositories
                          }
                      }).FirstOrDefault(u => u.Email == email)!;
 
-
-
                 if (usuarioBuscado != null)
                 {
-                    bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha);
+                    bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha!);
 
                     if (confere)
                     {
@@ -55,6 +64,11 @@ namespace eventplus_webapi.Repositories
             }
         }
 
+        /// <summary>
+        /// Método responsável por buscar um usuário pelo seu ID
+        /// </summary>
+        /// <param name="id">ID do usuário que será buscado</param>
+        /// <returns>retorna o objeto encontrado</returns>
         public Usuario BuscarPorId(Guid id)
         {
             try
@@ -84,6 +98,10 @@ namespace eventplus_webapi.Repositories
             }
         }
 
+        /// <summary>
+        /// Método responsável por cadastrar um novo usuário
+        /// </summary>
+        /// <param name="usuario">objeto com os novos atributos a serem cadastrados</param>
         public void Cadastrar(Usuario usuario)
         {
             try

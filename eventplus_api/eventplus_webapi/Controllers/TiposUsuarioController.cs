@@ -83,5 +83,45 @@ namespace eventplus_webapi.Controllers
                 return BadRequest(erro.Message);
             }
         }
+
+        /// <summary>
+        /// Endpoint que acessa o método Deletar do TipoUsuarioRepository
+        /// </summary>
+        /// <param name="id">ID do usuário que será deletado</param>
+        /// <returns>Retorna um StatusCode 200 - Ok</returns>
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _tipoUsuarioRepository.Deletar(id);
+
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint que aciona o método BuscarPorId no TipoUsuarioRepository
+        /// </summary>
+        /// <param name="id">ID do usuário que será buscado</param>
+        /// <returns>retorna um StatusCode Ok - 200 com o objeto encontrado</returns>
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                return Ok(_tipoUsuarioRepository.BuscarPorId(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
