@@ -11,6 +11,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace eventplus_webapi.Controllers
 {
+    /// <summary>
+    /// Controlador com os métodos necessários para realizar o login
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -18,11 +21,19 @@ namespace eventplus_webapi.Controllers
     {
         private IUsuarioRepository _usuarioRepository;
 
+        /// <summary>
+        /// Construtor para criar um novo objeto UsuarioRepository
+        /// </summary>
         public LoginController()
         {
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Método para realizar o login de um usuário utilizando o método BuscarPorEmailESenha no UsuarioRepository
+        /// </summary>
+        /// <param name="usuario">Objeto da LoginViewModel para realizar o login do usuário</param>
+        /// <returns>Retorna um StatusCode 200 - Ok</returns>
         [HttpPost]
         public IActionResult Login(LoginViewModel usuario)
         {

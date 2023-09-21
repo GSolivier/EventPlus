@@ -46,11 +46,11 @@ namespace eventplus_webapi.Contexts
         /// <param name="optionsBuilder">Objeto para acessar a string de conexão</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Server=NOTE18-S14; Database=Event+_Manha; User id=sa; pwd=Senai@134; TrustServerCertificate=true");
-            //base.OnConfiguring(optionsBuilder);
-
-            optionsBuilder.UseSqlServer("Server=GUILHERME\\SQLEXPRESS; Database=Event+_Manha; User id=sa; pwd=Senai@134; TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer("Server=NOTE18-S14; Database=Event+_Manha; User id=sa; pwd=Senai@134; TrustServerCertificate=true");
             base.OnConfiguring(optionsBuilder);
+
+            //optionsBuilder.UseSqlServer("Server=GUILHERME\\SQLEXPRESS; Database=Event+_Manha; User id=sa; pwd=Senai@134; TrustServerCertificate=true");
+            //base.OnConfiguring(optionsBuilder);
         }
 
 

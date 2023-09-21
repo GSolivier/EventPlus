@@ -4,6 +4,164 @@
         <name>eventplus_webapi</name>
     </assembly>
     <members>
+        <member name="P:eventplus_webapi.Contexts.EventContext.TiposUsuario">
+            <summary>
+            Referencia a tabela TiposUsuario no banco de dados
+            </summary>
+        </member>
+        <member name="P:eventplus_webapi.Contexts.EventContext.Usuario">
+            <summary>
+            Referencia a tabela Usuario no banco de dados
+            </summary>
+        </member>
+        <member name="P:eventplus_webapi.Contexts.EventContext.TiposEvento">
+            <summary>
+            Referencia a tabela TiposEvento no banco de dados
+            </summary>
+        </member>
+        <member name="P:eventplus_webapi.Contexts.EventContext.Evento">
+            <summary>
+            Referencia a tabela Evento no banco de dados
+            </summary>
+        </member>
+        <member name="P:eventplus_webapi.Contexts.EventContext.ComentarioEvento">
+            <summary>
+            Referencia a tabela ComentarioEvento no banco de dados
+            </summary>
+        </member>
+        <member name="P:eventplus_webapi.Contexts.EventContext.Instituicao">
+            <summary>
+            Referencia a tabela Instituicao no banco de dados
+            </summary>
+        </member>
+        <member name="P:eventplus_webapi.Contexts.EventContext.PresencasEvento">
+            <summary>
+            Referencia a tabela PresencaEvento no banco de dados
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Contexts.EventContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Configuração da conexão com o banco de dados
+            </summary>
+            <param name="optionsBuilder">Objeto para acessar a string de conexão</param>
+        </member>
+        <member name="T:eventplus_webapi.Controllers.LoginController">
+            <summary>
+            Controlador com os métodos necessários para realizar o login
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.LoginController.#ctor">
+            <summary>
+            Construtor para criar um novo objeto UsuarioRepository
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.LoginController.Login(eventplus_webapi.ViewModels.LoginViewModel)">
+            <summary>
+            Método para realizar o login de um usuário utilizando o método BuscarPorEmailESenha no UsuarioRepository
+            </summary>
+            <param name="usuario">Objeto da LoginViewModel para realizar o login do usuário</param>
+            <returns>Retorna um StatusCode 200 - Ok</returns>
+        </member>
+        <member name="T:eventplus_webapi.Controllers.TiposEventoController">
+            <summary>
+            Controlador para armazenar os métodos da entidade TiposEvento
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposEventoController.#ctor">
+            <summary>
+            controlador para instanciar um novo repositório de evento
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposEventoController.Post(eventplus_webapi.Domains.TiposEvento)">
+            <summary>
+            Endpoint para realizar um cadastro de um novo tipo de evento a partir do repository
+            </summary>
+            <param name="tipoEvento">o objeto com os novos atributos a serem passados pelo usuário</param>
+            <returns>retorna um status code(201) - Created </returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposEventoController.Get">
+            <summary>
+            Endpoint que acessa o método de Listar na TiposEventoRepository
+            </summary>
+            <returns>Retorna um status code 200 - ok com a lista de objetos</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposEventoController.Put(System.Guid,eventplus_webapi.Domains.TiposEvento)">
+            <summary>
+            Endpoint que aciona o método Atualizar na tipoEventoRepository
+            </summary>
+            <param name="id">ID do objeto que será atualizado</param>
+            <param name="tipoEvento">corpo do objeto com as novas informações</param>
+            <returns>Retorna um status code Ok - 200</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposEventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Deletar do TipoEventoRepository
+            </summary>
+            <param name="id">ID do tipo de evento que será deletado</param>
+            <returns>Retorna um status code OK - 200</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposEventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId no tiposEventoRepoistory
+            </summary>
+            <param name="id">ID do objeto que será buscado</param>
+            <returns>Retorna um status code Ok com o objeto encontrado</returns>
+        </member>
+        <member name="T:eventplus_webapi.Controllers.TiposUsuarioController">
+            <summary>
+            Controlador com os métodos para a entidade TipoUsuario
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposUsuarioController.#ctor">
+            <summary>
+            Construtor para atribuir um novo objeto 
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposUsuarioController.Post(eventplus_webapi.Domains.TiposUsuario)">
+            <summary>
+            Endpoint que acessa o tipoUsuarioRepository para realizar um novo cadastro
+            </summary>
+            <param name="tiposUsuario">Objeto com os valores a serem cadastrados</param>
+            <returns>Retorna um StatusCode(200) - Ok</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposUsuarioController.Get">
+            <summary>
+            Endpoint que acessa o método Listar do tipoUsuarioRepository
+            </summary>
+            <returns>Retorna um status code 200 com a lista de tipos de usuários</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.TiposUsuarioController.Put(System.Guid,eventplus_webapi.Domains.TiposUsuario)">
+            <summary>
+            Endpoint que acessa o método Atualizar do tipoUsuarioRepository
+            </summary>
+            <param name="id">ID do usuário que será atualizado</param>
+            <param name="tipoUsuario">Objeto com os novos atributos a serem atualizados</param>
+            <returns>Retorna um status code 200 - Ok</returns>
+        </member>
+        <member name="T:eventplus_webapi.Controllers.UsuarioController">
+            <summary>
+            Controlador responsável pelos Endpoints de usuário
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.UsuarioController.#ctor">
+            <summary>
+            Construtor para atribuir o objeto UsuarioRepository
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.UsuarioController.GetById(System.Guid)">
+            <summary>
+            Endpoint para buscar um usuário pelo seu ID
+            </summary>
+            <param name="id">ID do usuário que será buscado</param>
+            <returns>Retorna um StatusCode(200) - OK com o objeto encontrado</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.UsuarioController.Post(eventplus_webapi.Domains.Usuario)">
+            <summary>
+            Endpoint para cadastrar um novo usuário
+            </summary>
+            <param name="usuario">Objeto com os atributos que serão cadastrados</param>
+            <returns>Retorna um Status Code 201 - Created</returns>
+        </member>
         <member name="T:eventplus_webapi.Domains.ComentarioEvento">
             <summary>
             Domain que representa a entidade ComentarioEvento
@@ -200,8 +358,66 @@
         </member>
         <member name="T:eventplus_webapi.Interfaces.ITiposUsuarioRepository">
             <summary>
-            Interface responsável pelos métodos da entidade Tipos
+            Interface responsável pelos métodos da entidade TiposUsuario
             </summary>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposUsuarioRepository.Cadastrar(eventplus_webapi.Domains.TiposUsuario)">
+            <summary>
+            Método responsável por cadastrar um novo tipo de usuário no sistema
+            </summary>
+            <param name="tipoUsuario">objeto com os atributos que serão atualizados</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposUsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Método responsável por deletar um tipo de usuário
+            </summary>
+            <param name="id">ID do tipo de usuário que será deletado</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposUsuarioRepository.Listar">
+            <summary>
+            Método responsável por listar todos os tipos de usuário
+            </summary>
+            <returns>retorna a lista com todos os tipos de usuário</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método responsável por buscar um tipo de usuário pelo seu ID
+            </summary>
+            <param name="id">ID do tipo do usuário que sera´buscado</param>
+            <returns>retorna o objeto encontrado</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.ITiposUsuarioRepository.Atualizar(System.Guid,eventplus_webapi.Domains.TiposUsuario)">
+            <summary>
+            Método responsável por atualizar um tipo de usuário existente
+            </summary>
+            <param name="id">ID do tipo de usuário que será atualizado</param>
+            <param name="tipoUsuario">objeto que contém os atributos que serão atualizados</param>
+        </member>
+        <member name="T:eventplus_webapi.Interfaces.IUsuarioRepository">
+            <summary>
+            Interface responsável por definir os métodos da entidade Usuario
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IUsuarioRepository.Cadastrar(eventplus_webapi.Domains.Usuario)">
+            <summary>
+            Método responsável por cadastrar um novo usuário
+            </summary>
+            <param name="usuario">objeto com os novos atributos a serem cadastrados</param>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método responsável por buscar um usuário pelo seu ID
+            </summary>
+            <param name="id">ID do usuário que será buscado</param>
+            <returns>retorna o objeto encontrado</returns>
+        </member>
+        <member name="M:eventplus_webapi.Interfaces.IUsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Método responsável por buscar um usuário pelo seu email e senha
+            </summary>
+            <param name="email">email que será fornecido pelo usuário</param>
+            <param name="senha">senha que será fornecida pelo usuário</param>
+            <returns>retorna o objeto encontrado</returns>
         </member>
         <member name="T:eventplus_webapi.Migrations.BD_v1">
             <inheritdoc />
@@ -214,6 +430,77 @@
         </member>
         <member name="M:eventplus_webapi.Migrations.BD_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:eventplus_webapi.Repositories.TiposEventoRepository">
+            <summary>
+            Repositório para armazenar os métodos implementados pela interface
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposEventoRepository.#ctor">
+            <summary>
+            Construtor para instanciar um novo objeto do contexto
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposEventoRepository.Cadastrar(eventplus_webapi.Domains.TiposEvento)">
+            <summary>
+            Método responsável por cadastrar um novo tipo de evento
+            </summary>
+            <param name="tipoEvento">Objeto com os atributos que serão cadastrados</param>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposEventoRepository.Listar">
+            <summary>
+            Método responsável por listar todos os tipos de eventos
+            </summary>
+            <returns>Retorna a lista com todos os tipos de eventos</returns>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposEventoRepository.Atualizar(System.Guid,eventplus_webapi.Domains.TiposEvento)">
+            <summary>
+            Método responsável por atualizar um tipo de evento existente
+            </summary>
+            <param name="id">ID do tipo de evento que será atualizado</param>
+            <param name="tipoEvento">objeto com os novos dados para atualizar</param>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Método responsável por deletar um tipo de evento
+            </summary>
+            <param name="id">ID do tipo de evento que será deletado</param>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método responsável por buscar um tipo de evento por seu ID
+            </summary>
+            <param name="id">ID do tipo de evento que será buscado</param>
+            <returns>retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:eventplus_webapi.Repositories.TiposUsuarioRepository">
+            <summary>
+            Repositório com os métodos implementados pela Interface
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposUsuarioRepository.#ctor">
+            <summary>
+            Construtor que instancia o objeto
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposUsuarioRepository.Cadastrar(eventplus_webapi.Domains.TiposUsuario)">
+            <summary>
+            Método responsável por cadastrar um novo tipo de usuário no sistema
+            </summary>
+            <param name="tipoUsuario">objeto com os atributos que serão atualizados</param>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposUsuarioRepository.Listar">
+            <summary>
+            Método responsável por listar todos os tipos de usuário
+            </summary>
+            <returns>retorna a lista com todos os tipos de usuário</returns>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.TiposUsuarioRepository.Atualizar(System.Guid,eventplus_webapi.Domains.TiposUsuario)">
+            <summary>
+            Método responsável por atualizar um tipo de usuário existente
+            </summary>
+            <param name="id">ID do tipo de usuário que será atualizado</param>
+            <param name="tipoUsuario">objeto que contém os atributos que serão atualizados</param>
         </member>
     </members>
 </doc>

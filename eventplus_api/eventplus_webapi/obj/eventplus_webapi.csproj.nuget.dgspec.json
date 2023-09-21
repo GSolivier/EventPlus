@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\backuop\\DEVSENAI\\EventPlus\\eventplus_api\\eventplus_webapi\\eventplus_webapi.csproj": {}
+    "C:\\Users\\42634177801\\Desktop\\EventPlus\\eventplus_api\\eventplus_webapi\\eventplus_webapi.csproj": {}
   },
   "projects": {
-    "C:\\backuop\\DEVSENAI\\EventPlus\\eventplus_api\\eventplus_webapi\\eventplus_webapi.csproj": {
+    "C:\\Users\\42634177801\\Desktop\\EventPlus\\eventplus_api\\eventplus_webapi\\eventplus_webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\backuop\\DEVSENAI\\EventPlus\\eventplus_api\\eventplus_webapi\\eventplus_webapi.csproj",
+        "projectUniqueName": "C:\\Users\\42634177801\\Desktop\\EventPlus\\eventplus_api\\eventplus_webapi\\eventplus_webapi.csproj",
         "projectName": "eventplus_webapi",
-        "projectPath": "C:\\backuop\\DEVSENAI\\EventPlus\\eventplus_api\\eventplus_webapi\\eventplus_webapi.csproj",
-        "packagesPath": "C:\\Users\\guilh\\.nuget\\packages\\",
-        "outputPath": "C:\\backuop\\DEVSENAI\\EventPlus\\eventplus_api\\eventplus_webapi\\obj\\",
+        "projectPath": "C:\\Users\\42634177801\\Desktop\\EventPlus\\eventplus_api\\eventplus_webapi\\eventplus_webapi.csproj",
+        "packagesPath": "C:\\Users\\42634177801\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\42634177801\\Desktop\\EventPlus\\eventplus_api\\eventplus_webapi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\guilh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\42634177801\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

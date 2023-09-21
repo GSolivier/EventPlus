@@ -105,12 +105,11 @@ app.UseSwaggerUI(options =>
 });
 
 app.MapControllers();
-app.UseAuthentication();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseHttpsRedirection();
-
 
 
 app.Run();

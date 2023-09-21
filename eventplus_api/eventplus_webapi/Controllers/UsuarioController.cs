@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eventplus_webapi.Controllers
 {
+    /// <summary>
+    /// Controlador responsável pelos Endpoints de usuário
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
@@ -15,13 +18,21 @@ namespace eventplus_webapi.Controllers
     {
         private IUsuarioRepository _usuarioRepository;
 
+        /// <summary>
+        /// Construtor para atribuir o objeto UsuarioRepository
+        /// </summary>
         public UsuarioController()
         {
             _usuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Endpoint para buscar um usuário pelo seu ID
+        /// </summary>
+        /// <param name="id">ID do usuário que será buscado</param>
+        /// <returns>Retorna um StatusCode(200) - OK com o objeto encontrado</returns>
         [HttpGet("{id}")]
-        [Authorize(Roles = "Adm")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult GetById(Guid id)
         {
             try
@@ -42,8 +53,13 @@ namespace eventplus_webapi.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint para cadastrar um novo usuário
+        /// </summary>
+        /// <param name="usuario">Objeto com os atributos que serão cadastrados</param>
+        /// <returns>Retorna um Status Code 201 - Created</returns>
         [HttpPost]
-        //[Authorize(Roles = "Administrador, Aluno")]
+        [Authorize(Roles = "Administrador, Aluno")]
         public IActionResult Post(Usuario usuario)
         {
             try
