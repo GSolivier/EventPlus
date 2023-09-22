@@ -45,6 +45,37 @@
             </summary>
             <param name="optionsBuilder">Objeto para acessar a string de conexão</param>
         </member>
+        <member name="T:eventplus_webapi.Controllers.ComentarioEventoController">
+            <summary>
+            Controlador com os Endpoints da entidade ComentarioEvento
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.#ctor">
+            <summary>
+            Construtor que instancia o objeto do repositório
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.Post(eventplus_webapi.Domains.ComentarioEvento)">
+            <summary>
+            Endpoint que acessa o método cadastrar do ComentarioEventoRepository
+            </summary>
+            <param name="comentarioEvento">Objeto com os atributos a serem cadastrados</param>
+            <returns>retorna um status code 200 - OK</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.GetByIdEvento(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Listar do ComentarioEventoRepository
+            </summary>
+            <param name="idEvento">ID do evento que terá seus comentários listados</param>
+            <returns>retorna um status code ok -200 com uma lista dos objetos</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.GetByIdUsuario(System.Guid)">
+            <summary>
+            Endpoint que acessa o método ListarPorUsuario do repositório ComentarioEventoRepository
+            </summary>
+            <param name="idUsuario">ID do usuário que terá seus comentários listados</param>
+            <returns>retorna um status code Ok - 200 com os objetos listados</returns>
+        </member>
         <member name="T:eventplus_webapi.Controllers.EventoController">
             <summary>
             Controlador responsável pelos Endpoits da entidade Evento
@@ -355,6 +386,12 @@
             <param name="idUsuario">Id do usuário que terá os seus comentários listados</param>
             <returns>Uma lista com os comentários do usuário</returns>
         </member>
+        <member name="M:eventplus_webapi.Interfaces.IComentarioEventoRepository.ListarTodos">
+            <summary>
+            Método para listar todos os comentários
+            </summary>
+            <returns>retorna uma lista com os objetos</returns>
+        </member>
         <member name="T:eventplus_webapi.Interfaces.IEventoRepository">
             <summary>
             Interface que é responsável por definir os métodos da entidade Evento
@@ -551,6 +588,35 @@
         </member>
         <member name="M:eventplus_webapi.Migrations.BD_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:eventplus_webapi.Repositories.ComentarioEventoRepository">
+            <summary>
+            Repositório que define os métodos implementados na Interface IComentarioRepository
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.#ctor">
+            <summary>
+            Construtor que instancia o objeto da context
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.Cadastrar(eventplus_webapi.Domains.ComentarioEvento)">
+            <summary>
+            Método para cadastrar um novo comentário
+            </summary>
+            <param name="comentarioEvento">Objeto com os valores a serem cadastrados</param>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.Listar(System.Guid)">
+            <summary>
+            Método para listar todos os comentários daquele evento
+            </summary>
+            <returns> Retorna a lista dos comentários</returns>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.ListarPorUsuario(System.Guid)">
+            <summary>
+            Lista todos os comentários de um determindado usuário
+            </summary>
+            <param name="idUsuario">Id do usuário que terá os seus comentários listados</param>
+            <returns>Uma lista com os comentários do usuário</returns>
         </member>
         <member name="T:eventplus_webapi.Repositories.EventoRepository">
             <summary>

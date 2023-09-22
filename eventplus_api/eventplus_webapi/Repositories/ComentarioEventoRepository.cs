@@ -12,37 +12,129 @@ namespace eventplus_webapi.Repositories
         private readonly EventContext _eventContext;
 
         /// <summary>
-        /// 
+        /// Construtor que instancia o objeto da context
         /// </summary>
         public ComentarioEventoRepository()
         {
             _eventContext = new EventContext();
         }
 
+        /// <summary>
+        /// Método para cadastrar um novo comentário
+        /// </summary>
+        /// <param name="comentarioEvento">Objeto com os valores a serem cadastrados</param>
         public void Cadastrar(ComentarioEvento comentarioEvento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _eventContext.ComentarioEvento.Add(comentarioEvento);
+
+                _eventContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
+        /// <summary>
+        /// Método para listar todos os comentários daquele evento
+        /// </summary>
+        /// <returns> Retorna a lista dos comentários</returns>
         public List<ComentarioEvento> Listar(Guid idEvento)
         {
-            throw new NotImplementedException();
+            try
+            {
+               return _eventContext.ComentarioEvento.Where(ce => ce.IdEvento == idEvento).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
+        /// <summary>
+        /// Lista todos os comentários de um determindado usuário
+        /// </summary>
+        /// <param name="idUsuario">Id do usuário que terá os seus comentários listados</param>
+        /// <returns>Uma lista com os comentários do usuário</returns>
         public List<ComentarioEvento> ListarPorUsuario(Guid idUsuario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _eventContext.ComentarioEvento.Where(ce => ce.IdUsuario == idUsuario).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
+        /// <summary>
+        /// Método para listar todos os comentários
+        /// </summary>
+        /// <returns>retorna uma lista com os objetos</returns>
+        public List<ComentarioEvento> ListarTodos()
+        {
+            try
+            {
+               return _eventContext.ComentarioEvento.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Método para buscar um comentário por ID
+        /// </summary>
+        /// <param name="id">ID do comentário que será buscado</param>
+        /// <returns>Retorna o objeto com o comentário buscado</returns>
         public ComentarioEvento BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ComentarioEvento comentarioEventoBuscado = _eventContext.ComentarioEvento.FirstOrDefault(ce => ce.IdComentarioEvento == id)!;
+
+                if (comentarioEventoBuscado == null)
+                {
+                    throw new Exception($"O comentário com o ID {id} não foi encontrado");
+                }
+
+                return comentarioEventoBuscado;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
+        /// <summary>
+        /// Método para deletar um comentário existente
+        /// </summary>
+        /// <param name="id"> ID do comentário que será deletado </param>
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ComentarioEvento comentarioEventoBuscado = BuscarPorId(id);
+
+                _eventContext.ComentarioEvento.Remove(comentarioEventoBuscado);
+
+                _eventContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+
     }
 
 }
