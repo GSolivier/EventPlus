@@ -76,6 +76,26 @@
             <param name="idUsuario">ID do usuário que terá seus comentários listados</param>
             <returns>retorna um status code Ok - 200 com os objetos listados</returns>
         </member>
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.GetAll">
+            <summary>
+            Endpoint que acessa o método ListarTodos do ComentarioEventoRepository
+            </summary>
+            <returns>Retorna a lista com os objetos</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId do ComentarioEventoRepository
+            </summary>
+            <param name="id">ID do comentário que será buscado</param>
+            <returns>retorna um statis code Ok com o objeto encontrado</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Deletar do COmentarioEventoRepository
+            </summary>
+            <param name="id">ID do comentário que será deletado</param>
+            <returns>Retorna um status code Ok - 200</returns>
+        </member>
         <member name="T:eventplus_webapi.Controllers.EventoController">
             <summary>
             Controlador responsável pelos Endpoits da entidade Evento
@@ -617,6 +637,25 @@
             </summary>
             <param name="idUsuario">Id do usuário que terá os seus comentários listados</param>
             <returns>Uma lista com os comentários do usuário</returns>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.ListarTodos">
+            <summary>
+            Método para listar todos os comentários
+            </summary>
+            <returns>retorna uma lista com os objetos</returns>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um comentário por ID
+            </summary>
+            <param name="id">ID do comentário que será buscado</param>
+            <returns>Retorna o objeto com o comentário buscado</returns>
+        </member>
+        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar um comentário existente
+            </summary>
+            <param name="id"> ID do comentário que será deletado </param>
         </member>
         <member name="T:eventplus_webapi.Repositories.EventoRepository">
             <summary>

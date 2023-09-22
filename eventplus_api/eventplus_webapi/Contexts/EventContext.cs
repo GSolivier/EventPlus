@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eventplus_webapi.Contexts
 {
+    /// <summary>
+    /// contexto que acessa o banco de dados
+    /// </summary>
     public class EventContext : DbContext
     {
         /// <summary>
