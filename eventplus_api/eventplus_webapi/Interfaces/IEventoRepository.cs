@@ -26,6 +26,12 @@ namespace eventplus_webapi.Interfaces
         List<Evento> Listar();
 
         /// <summary>
+        /// Método que lista todos os eventos a partir da data atual
+        /// </summary>
+        /// <returns>Retorna a lista dos próximos eventos</returns>
+        List<Evento> ListarProximos();
+
+        /// <summary>
         /// Método para buscar um evento pelo seu ID
         /// </summary>
         /// <param name="id">ID do evento que será buscado</param>

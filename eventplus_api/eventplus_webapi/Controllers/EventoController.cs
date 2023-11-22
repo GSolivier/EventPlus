@@ -63,6 +63,24 @@ namespace eventplus_webapi.Controllers
         }
 
         /// <summary>
+        /// Endpoint que acessa o método ListarProximos do EventoRepository
+        /// </summary>
+        /// <returns>Retorna um StatusCode Ok - 200 com a lista de objetos</returns>
+        [HttpGet("ListarProximos")]
+        public IActionResult GetNext()
+        {
+            try
+            {
+                return Ok(_eventoRepository.ListarProximos());
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
+
+        /// <summary>
         /// Endpoint que acessa o método Atualizar na EventoRepository
         /// </summary>
         /// <param name="id">ID do objeto que será atualizado</param>

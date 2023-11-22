@@ -16,6 +16,8 @@ builder.Services.AddAuthentication(options =>
 
 })
 
+
+
 .AddJwtBearer("JwtBearer", options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -88,6 +90,14 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddCors(options => {
+    options.AddPolicy(name: "MyPolicy",
+    policy => {
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    }   
+    );
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -103,6 +113,8 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     options.RoutePrefix = string.Empty;
 });
+    
+app.UseCors("MyPolicy");
 
 app.MapControllers();
 

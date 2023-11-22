@@ -46,10 +46,44 @@ namespace eventplus_webapi.Repositories
         {
             try
             {
-                return _eventContext.Evento.ToList();
+                return _eventContext.Evento.Select(e => new Evento
+                {
+                    IdEvento = e.IdEvento,
+                    DataEvento = e.DataEvento,
+                    Nome = e.Nome,
+                    Descricao = e.Descricao,
+                    TiposEvento = new TiposEvento
+                    {
+                        IdTipoEvento = e.IdTipoEvento,
+                        Titulo = e.TiposEvento!.Titulo
+                    },
+                    IdInstituicao = e.IdInstituicao,
+                    Instituicao = new Instituicao
+                    {   
+                        IdInstituicao = e.IdInstituicao,
+                        NomeFantasia = e.Instituicao!.NomeFantasia
+                    }
+                }).ToList(); ;
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Método que lista todos os eventos a partir da data atual
+        /// </summary>
+        /// <returns>Retorna a lista dos próximos eventos</returns>
+        public List<Evento> ListarProximos()
+        {
+            try
+            {
+                return _eventContext.Evento.Where(e => e.DataEvento >= DateTime.Now).ToList();
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }
@@ -134,5 +168,6 @@ namespace eventplus_webapi.Repositories
                 throw;
             }
         }
+
     }
 }

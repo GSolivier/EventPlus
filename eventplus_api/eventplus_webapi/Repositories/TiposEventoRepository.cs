@@ -46,7 +46,7 @@ namespace eventplus_webapi.Repositories
         {
             try
             {
-                return _eventContext.TiposEvento.ToList();
+                return _eventContext.TiposEvento.OrderBy(tp => tp.Titulo).ToList();
             }
             catch (Exception)
             {

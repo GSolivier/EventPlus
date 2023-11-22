@@ -4,6 +4,11 @@
         <name>eventplus_webapi</name>
     </assembly>
     <members>
+        <member name="T:eventplus_webapi.Contexts.EventContext">
+            <summary>
+            contexto que acessa o banco de dados
+            </summary>
+        </member>
         <member name="P:eventplus_webapi.Contexts.EventContext.TiposUsuario">
             <summary>
             Referencia a tabela TiposUsuario no banco de dados
@@ -118,6 +123,12 @@
             Endpoint que acessa o método Listar na EventoRepository
             </summary>
             <returns>Retorna um StatusCode Ok - 200 com a lista de eventos</returns>
+        </member>
+        <member name="M:eventplus_webapi.Controllers.EventoController.GetNext">
+            <summary>
+            Endpoint que acessa o método ListarProximos do EventoRepository
+            </summary>
+            <returns>Retorna um StatusCode Ok - 200 com a lista de objetos</returns>
         </member>
         <member name="M:eventplus_webapi.Controllers.EventoController.Put(System.Guid,eventplus_webapi.Domains.Evento)">
             <summary>
@@ -435,6 +446,12 @@
             </summary>
             <returns>Retorna a lista de todos os eventos</returns>
         </member>
+        <member name="M:eventplus_webapi.Interfaces.IEventoRepository.ListarProximos">
+            <summary>
+            Método que lista todos os eventos a partir da data atual
+            </summary>
+            <returns>Retorna a lista dos próximos eventos</returns>
+        </member>
         <member name="M:eventplus_webapi.Interfaces.IEventoRepository.BuscarPorId(System.Guid)">
             <summary>
             Método para buscar um evento pelo seu ID
@@ -679,6 +696,12 @@
             </summary>
             <returns>Retorna a lista de todos os eventos</returns>
         </member>
+        <member name="M:eventplus_webapi.Repositories.EventoRepository.ListarProximos">
+            <summary>
+            Método que lista todos os eventos a partir da data atual
+            </summary>
+            <returns>Retorna a lista dos próximos eventos</returns>
+        </member>
         <member name="M:eventplus_webapi.Repositories.EventoRepository.Atualizar(System.Guid,eventplus_webapi.Domains.Evento)">
             <summary>
             Método para atualizar um evento existente
@@ -866,6 +889,26 @@
             Método responsável por cadastrar um novo usuário
             </summary>
             <param name="usuario">objeto com os novos atributos a serem cadastrados</param>
+        </member>
+        <member name="T:eventplus_webapi.Utils.Criptografia">
+            <summary>
+            Classe estática responsável por criptografar as senhas usando o BCrypt
+            </summary>
+        </member>
+        <member name="M:eventplus_webapi.Utils.Criptografia.GerarHash(System.String)">
+            <summary>
+            Método que transforma a senha em uma HASH
+            </summary>
+            <param name="senha">Senha que será transformada</param>
+            <returns>retorna a HASH</returns>
+        </member>
+        <member name="M:eventplus_webapi.Utils.Criptografia.CompararHash(System.String,System.String)">
+            <summary>
+            Método responsável por comparar a hash passada pelo form com a hash ja cadastrada no banco
+            </summary>
+            <param name="senhaForm">Senha passada no formulário</param>
+            <param name="senhaBanco">Senha cadastrada no banco</param>
+            <returns>Retorna um true ou false dependendo se as senhas forem comparadas</returns>
         </member>
     </members>
 </doc>
