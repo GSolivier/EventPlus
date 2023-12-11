@@ -37,7 +37,7 @@ namespace eventplus_webapi.Interfaces
         /// </summary>
         /// <param name="idUsuario">Id do usuário que terá os seus comentários listados</param>
         /// <returns>Uma lista com os comentários do usuário</returns>
-        List<ComentarioEvento> ListarPorUsuario(Guid idUsuario);
+        ComentarioEvento ListarPorUsuario(Guid idUsuario, Guid idEvento);
 
         /// <summary>
         /// Método para listar todos os comentários

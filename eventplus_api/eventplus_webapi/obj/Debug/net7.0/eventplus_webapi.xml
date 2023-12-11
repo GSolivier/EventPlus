@@ -74,7 +74,7 @@
             <param name="idEvento">ID do evento que terá seus comentários listados</param>
             <returns>retorna um status code ok -200 com uma lista dos objetos</returns>
         </member>
-        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.GetByIdUsuario(System.Guid)">
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.GetByIdUsuario(System.Guid,System.Guid)">
             <summary>
             Endpoint que acessa o método ListarPorUsuario do repositório ComentarioEventoRepository
             </summary>
@@ -410,7 +410,7 @@
             <param name="id">ID do comentário que será buscado</param>
             <returns>Retorna o objeto com o comentário buscado</returns>
         </member>
-        <member name="M:eventplus_webapi.Interfaces.IComentarioEventoRepository.ListarPorUsuario(System.Guid)">
+        <member name="M:eventplus_webapi.Interfaces.IComentarioEventoRepository.ListarPorUsuario(System.Guid,System.Guid)">
             <summary>
             Lista todos os comentários de um determindado usuário
             </summary>
@@ -626,6 +626,18 @@
         <member name="M:eventplus_webapi.Migrations.BD_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:eventplus_webapi.Migrations.eventplusDbNuvem">
+            <inheritdoc />
+        </member>
+        <member name="M:eventplus_webapi.Migrations.eventplusDbNuvem.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:eventplus_webapi.Migrations.eventplusDbNuvem.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:eventplus_webapi.Migrations.eventplusDbNuvem.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="T:eventplus_webapi.Repositories.ComentarioEventoRepository">
             <summary>
             Repositório que define os métodos implementados na Interface IComentarioRepository
@@ -648,7 +660,7 @@
             </summary>
             <returns> Retorna a lista dos comentários</returns>
         </member>
-        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.ListarPorUsuario(System.Guid)">
+        <member name="M:eventplus_webapi.Repositories.ComentarioEventoRepository.ListarPorUsuario(System.Guid,System.Guid)">
             <summary>
             Lista todos os comentários de um determindado usuário
             </summary>

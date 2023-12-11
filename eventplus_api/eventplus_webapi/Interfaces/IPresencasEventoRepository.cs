@@ -38,5 +38,7 @@ namespace eventplus_webapi.Interfaces
         /// <param name="idUsuario">As presenças serão buscadas a partir do ID do usuário</param>
         /// <returns>Retorna a lista filtrada</returns>
         List<PresencasEvento> ListarPresencasUser(Guid idUsuario);
+
+        PresencasEvento BuscarPorId(Guid id);
     }
 }

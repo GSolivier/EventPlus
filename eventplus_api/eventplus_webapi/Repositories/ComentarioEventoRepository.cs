@@ -59,11 +59,29 @@ namespace eventplus_webapi.Repositories
         /// </summary>
         /// <param name="idUsuario">Id do usuário que terá os seus comentários listados</param>
         /// <returns>Uma lista com os comentários do usuário</returns>
-        public List<ComentarioEvento> ListarPorUsuario(Guid idUsuario)
+        public ComentarioEvento ListarPorUsuario(Guid idUsuario, Guid idEvento)
         {
             try
             {
-                return _eventContext.ComentarioEvento.Where(ce => ce.IdUsuario == idUsuario).ToList();
+                return _eventContext.ComentarioEvento.Select(x => new ComentarioEvento
+                {
+                    IdComentarioEvento = x.IdComentarioEvento,
+                    Descricao = x.Descricao,
+                    Exibe = x.Exibe,
+                    IdUsuario = x.IdUsuario,
+                    IdEvento = x.IdEvento,
+
+                    Usuario = new Usuario { 
+                        IdUsuario = x.IdUsuario,
+                        Nome = x.Usuario!.Nome
+                    },
+                    Evento = new Evento
+                    {
+                        IdEvento = x.IdEvento,
+                        Nome = x.Evento!.Nome
+                    }
+                }
+                ).FirstOrDefault(x => x.IdUsuario == idUsuario && x.IdEvento == idEvento)!;
             }
             catch (Exception)
             {

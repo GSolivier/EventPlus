@@ -71,10 +71,10 @@ export const Select = ({
         value={defaultValue}
         >
 
-            <option disabled value={0}>Selecione</option>
+            <option disabled defaultValue value={""}>Selecione</option>
             {options.map((o) => {
                 return (
-                    <option key={o.idTipoEvento} value={o.idTipoEvento}>{o.titulo}</option>
+                    <option key={o.value} value={o.value}>{o.text}</option>
                 )
             })}
 

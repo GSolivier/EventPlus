@@ -51,7 +51,8 @@ namespace eventplus_webapi.Controllers
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioEncontrado.IdUsuario.ToString()),
                     new Claim(JwtRegisteredClaimNames.Name, usuarioEncontrado.Nome!.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email, usuarioEncontrado.Email!),
-                    new Claim(ClaimTypes.Role, usuarioEncontrado.TiposUsuario!.Titulo!)
+                    //new Claim(ClaimTypes.Role, usuarioEncontrado.TiposUsuario!.Titulo!)
+                    new Claim("role", usuarioEncontrado.TiposUsuario!.Titulo!)
                 };
 
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("senai-eventplus-chave-autenticacao-webapi"));

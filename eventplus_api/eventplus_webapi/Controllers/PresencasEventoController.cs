@@ -124,5 +124,27 @@ namespace eventplus_webapi.Controllers
                 return BadRequest(erro.Message);
             }
         }
+
+        [HttpGet("BuscarPorId/{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                try
+                {
+                    return Ok(_presecasEventoRepository.BuscarPorId(id));
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

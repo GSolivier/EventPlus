@@ -51,7 +51,7 @@ namespace eventplus_webapi.Controllers
         /// </summary>
         /// <param name="idEvento">ID do evento que terá seus comentários listados</param>
         /// <returns>retorna um status code ok -200 com uma lista dos objetos</returns>
-        [HttpGet("comentario-evento/{idEvento}")]
+        [HttpGet("Evento/{idEvento}")]
         public IActionResult GetByIdEvento(Guid idEvento)
         {
             try
@@ -70,12 +70,12 @@ namespace eventplus_webapi.Controllers
         /// </summary>
         /// <param name="idUsuario">ID do usuário que terá seus comentários listados</param>
         /// <returns>retorna um status code Ok - 200 com os objetos listados</returns>
-        [HttpGet("comentario-usuario/{idUsuario}")]
-        public IActionResult GetByIdUsuario(Guid idUsuario)
+        [HttpGet("Usuario")]
+        public IActionResult GetByIdUsuario(Guid idUsuario, Guid idEvento)
         {
             try
             {
-                return Ok(_comentarioEventoRepository.ListarPorUsuario(idUsuario));
+                return Ok(_comentarioEventoRepository.ListarPorUsuario(idUsuario, idEvento));
             }
             catch (Exception erro)
             {

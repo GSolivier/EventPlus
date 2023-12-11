@@ -24,8 +24,7 @@ const Eventos = () => {
         idInstituicao: "AFD0BD83-9773-4062-A85C-00DD26842CF1"
     })
 
-    const [objEvento, setObjEvento] = useState({})
-    const [notifyUser, setNotifyUser] = useState()// estado que muda o tipo de notificação
+    const [notifyUser, setNotifyUser] = useState({})// estado que muda o tipo de notificação
 
     const [tipoEventos, setTipoEventos] = useState([]) // Estado que guarda a lista de tipos de eventos vinda da API
 
@@ -34,11 +33,33 @@ const Eventos = () => {
             const retorno = await api.get(eventsResource)
 
             setEventos(retorno.data)
-            console.log(retorno.data)
 
         } catch (error) {
-            console.log(error)
+            setNotifyUser({
+                titleNote: "Erro!",
+                textNote: "Não foi possível carregar os eventos",
+                imgIcon: "danger",
+                imgAlt: "imagem de erro",
+                showMessage: true
+            })
         }
+    }
+
+    function transformType(){
+
+        const newArray = []
+
+        tipoEventos.map((tp) => {
+            
+            const obj = {
+                text: tp.titulo,
+                value: tp.idTipoEvento
+            }
+            
+            newArray.push(obj)
+        })
+
+        return newArray
     }
 
     async function loadEventsType() {
@@ -46,6 +67,13 @@ const Eventos = () => {
             const retorno = await api.get(eventsTypeResource)
             setTipoEventos(retorno.data)
         } catch (error) {
+            setNotifyUser({
+                titleNote: "Erro!",
+                textNote: "Não foi possível carregar os tipos de eventos",
+                imgIcon: "danger",
+                imgAlt: "imagem de erro",
+                showMessage: true
+            })
             console.log(error)
         }
     }
@@ -59,11 +87,37 @@ const Eventos = () => {
         e.preventDefault()
 
         try {
-            console.log(frmData)
             await api.post(eventsResource, frmData)
-            setFrmData({})
+
+
+            // document.getElementById('tipo-evento').value = 0
             loadEvents()
+
+            setNotifyUser({
+                titleNote: "Cadastrado com sucesso!",
+                textNote: `O evento ${frmData.nome} foi cadastrado com sucesso`,
+                imgIcon: "danger",
+                imgAlt: "imagem de erro",
+                showMessage: true
+            })
+
+            window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+
+            setFrmData({
+                nome: "",
+                descricao: "",
+                idTipoEvento: "",
+                dataEvento: "",
+                idInstituicao: "AFD0BD83-9773-4062-A85C-00DD26842CF1"
+            })
         } catch (error) {
+            setNotifyUser({
+                titleNote: "Erro!",
+                textNote: "Não foi cadastrar um novo evento, tente novamente mais tarde!",
+                imgIcon: "danger",
+                imgAlt: "imagem de erro",
+                showMessage: true
+            })
             console.log(error)
         }
     }
@@ -72,13 +126,18 @@ const Eventos = () => {
         e.preventDefault()
 
         try {
-            objEvento.nome = frmData.nome
-            objEvento.descricao = frmData.descricao
-            objEvento.idTipoEvento = frmData.idTipoEvento
-            objEvento.dataEvento = frmData.dataEvento
-            objEvento.idInstituicao = "AFD0BD83-9773-4062-A85C-00DD26842CF1"
 
-            await api.put(`${eventsResource}/${objEvento.idEvento}`, objEvento)
+
+            await api.put(`${eventsResource}/${frmData.idEvento}`, frmData)
+
+            setNotifyUser({
+                titleNote: "Atualizado com Sucesso!",
+                textNote: `O evento ${frmData.nome} foi atualizado com sucesso`,
+                imgIcon: "success",
+                imgAlt: "imagem de sucesso",
+                showMessage: true
+            })
+
             setFrmData({
                 nome: "",
                 descricao: "",
@@ -86,19 +145,38 @@ const Eventos = () => {
                 dataEvento: "",
                 idInstituicao: "AFD0BD83-9773-4062-A85C-00DD26842CF1"
             })
-            loadEvents()
-        } catch (error) {
             
+            loadEvents()
+            window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+        } catch (error) {
+            setNotifyUser({
+                titleNote: "Erro!",
+                textNote: "Não foi possível atualizar o evento",
+                imgIcon: "danger",
+                imgAlt: "imagem de erro",
+                showMessage: true
+            })
+            console.log(error);
         }
     }
 
     async function showUpdateForm(idEvento) {
-        setFrmEdit(true)
+        try {
+            setFrmEdit(true)
 
-        const retorno = await api.get(`${eventsResource}/${idEvento}`)
+            const retorno = await api.get(`${eventsResource}/${idEvento}`)
 
-        setFrmData(retorno.data)
-        setObjEvento(retorno.data)
+            setFrmData(retorno.data)
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (error) {
+            setNotifyUser({
+                titleNote: "Erro!",
+                textNote: "Não foi possível encontrar o evento",
+                imgIcon: "danger",
+                imgAlt: "imagem de erro",
+                showMessage: true
+            })
+        }
     }
 
     async function handleDelete(idEvento) {
@@ -106,7 +184,7 @@ const Eventos = () => {
             await api.delete(`${eventsResource}/${idEvento}`)
             loadEvents()
         } catch (error) {
-            
+
         }
     }
 
@@ -115,7 +193,7 @@ const Eventos = () => {
             {<Notification {...notifyUser} setNotifyUser={setNotifyUser} />}
 
             <MainContent>
-                <section>
+                <section className='cadastro-evento-section'>
                     <Container>
                         <div className='cadastro-evento__box'>
                             {frmEdit ? <Titulo titleText="Atualizar evento" /> : <Titulo titleText={"Cadastrar Evento"} />}
@@ -165,14 +243,14 @@ const Eventos = () => {
                                                     id="tipo-evento"
                                                     name="tipo-evento"
                                                     required="required"
-                                                    options={tipoEventos}
+                                                    options={transformType()}
+                                                    defaultValue={frmData.idTipoEvento}
                                                     manipulationFunction={(e) => {
                                                         setFrmData({
                                                             ...frmData,
                                                             idTipoEvento: e.target.value
                                                         })
                                                     }}
-                                                
                                                 />
 
                                                 <Input
@@ -238,7 +316,7 @@ const Eventos = () => {
                                                     id="tipo-evento"
                                                     name="tipo-evento"
                                                     required="required"
-                                                    options={tipoEventos}
+                                                    options={transformType()}
                                                     manipulationFunction={(e) => {
                                                         setFrmData({
                                                             ...frmData,
@@ -262,15 +340,20 @@ const Eventos = () => {
                                                         })
                                                     }}
                                                 />
+
+
+                                                <div className='button-box'>
                                                 <Button
                                                     textButton={"Atualizar"}
                                                     id="atualizar"
                                                     name="atualizar"
-                                                    type="submit" />
+                                                    type="submit"
+                                                    additionalClass={"button-component--middle"} />
                                                 <Button
                                                     textButton={"Voltar"}
                                                     id="voltar"
                                                     name="voltar"
+                                                    additionalClass={"button-component--middle"}
                                                     manipulationFunction={() => {
                                                         setFrmEdit(false)
                                                         setFrmData({
@@ -282,6 +365,9 @@ const Eventos = () => {
                                                         })
                                                     }}
                                                 />
+
+                                                </div>
+
                                             </>
 
                                         )

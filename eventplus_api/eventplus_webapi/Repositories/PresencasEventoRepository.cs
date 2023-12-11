@@ -129,6 +129,17 @@ namespace eventplus_webapi.Repositories
             }
         }
 
+        public PresencasEvento BuscarPorId(Guid id) {
+            PresencasEvento presencaEventoEncontrado = _eventContext.PresencasEvento.FirstOrDefault(pe => pe.IdPresencaEvento == id)!;
+
+            if (presencaEventoEncontrado == null)
+            {
+                throw new Exception($"A presença de evento com o ID {id} não foi encontrada");
+            }
+
+            return presencaEventoEncontrado;
+        }
+
 
     }
 }
