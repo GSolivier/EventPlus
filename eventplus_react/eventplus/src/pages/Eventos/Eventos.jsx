@@ -21,7 +21,7 @@ const Eventos = () => {
         descricao: "",
         idTipoEvento: "",
         dataEvento: "",
-        idInstituicao: "AFD0BD83-9773-4062-A85C-00DD26842CF1"
+        idInstituicao: "ef412118-15b8-4851-861b-2aee88eb6c6e"
     })
 
     const [notifyUser, setNotifyUser] = useState({})// estado que muda o tipo de notificação
