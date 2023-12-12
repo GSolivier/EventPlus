@@ -55,7 +55,7 @@
             Controlador com os Endpoints da entidade ComentarioEvento
             </summary>
         </member>
-        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.#ctor">
+        <member name="M:eventplus_webapi.Controllers.ComentarioEventoController.#ctor(Microsoft.Azure.CognitiveServices.ContentModerator.ContentModeratorClient)">
             <summary>
             Construtor que instancia o objeto do repositório
             </summary>

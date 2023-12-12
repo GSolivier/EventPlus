@@ -153,6 +153,38 @@ namespace eventplus_webapi.Repositories
             }
         }
 
+        public List<ComentarioEvento> ListarSomenteExibe()
+        {
+            try
+            {
+                return _eventContext.ComentarioEvento.Select(x => new ComentarioEvento
+                {
+                    IdComentarioEvento = x.IdComentarioEvento,
+                    Descricao = x.Descricao,
+                    Exibe = x.Exibe,
+                    IdUsuario = x.IdUsuario,
+                    IdEvento = x.IdEvento,
+
+                    Usuario = new Usuario
+                    {
+                        IdUsuario = x.IdUsuario,
+                        Nome = x.Usuario!.Nome
+                    },
+                    Evento = new Evento
+                    {
+                        IdEvento = x.IdEvento,
+                        Nome = x.Evento!.Nome
+                    }
+                }
+                ).Where(c => c.Exibe == true).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 
 }

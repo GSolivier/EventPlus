@@ -1,9 +1,10 @@
 ﻿using eventplus_webapi.Domains;
 using eventplus_webapi.Interfaces;
 using eventplus_webapi.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.Azure.CognitiveServices.ContentModerator;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace eventplus_webapi.Controllers
 {
@@ -17,12 +18,15 @@ namespace eventplus_webapi.Controllers
     {
         private IComentarioEventoRepository _comentarioEventoRepository;
 
+        private readonly ContentModeratorClient _contentModeratorClient;
+
         /// <summary>
         /// Construtor que instancia o objeto do repositório
         /// </summary>
-        public ComentarioEventoController()
+        public ComentarioEventoController(ContentModeratorClient contentModeratorClient)
         {
             _comentarioEventoRepository = new ComentarioEventoRepository();
+            _contentModeratorClient = contentModeratorClient;
         }
 
         /// <summary>
@@ -102,6 +106,20 @@ namespace eventplus_webapi.Controllers
             }
         }
 
+        [HttpGet("ListarSomenteExibe")]
+        public IActionResult GetExibe()
+        {
+            try
+            {
+                return Ok(_comentarioEventoRepository.ListarSomenteExibe());
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
+
         /// <summary>
         /// Endpoint que acessa o método BuscarPorId do ComentarioEventoRepository
         /// </summary>
@@ -141,5 +159,41 @@ namespace eventplus_webapi.Controllers
                 return BadRequest(erro.Message);
             }
         }
+
+        [HttpPost("ComentarioIA")]
+        public async Task<IActionResult> PostIA(ComentarioEvento comentario)
+        {
+            try
+            {
+                if ((comentario.Descricao).IsNullOrEmpty())
+                {
+                    return BadRequest("O comentário não pode estar vazio ou nulo!");
+                }
+
+                using var stream = new MemoryStream(Encoding.UTF8.GetBytes(comentario.Descricao!));
+
+                var moderationResult = await _contentModeratorClient.TextModeration.ScreenTextAsync("text/plain", stream, "por", false, false, null, true);
+
+                if (moderationResult.Terms != null)
+                {
+                    comentario.Exibe = false;
+
+                    _comentarioEventoRepository.Cadastrar(comentario);
+                }
+                else
+                {
+                    comentario.Exibe= true;
+
+                    _comentarioEventoRepository.Cadastrar(comentario);
+                }
+                return StatusCode(201, comentario);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message);
+            }
+        }
+
+
     }
 }

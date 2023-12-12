@@ -44,5 +44,7 @@ namespace eventplus_webapi.Interfaces
         /// </summary>
         /// <returns>retorna uma lista com os objetos</returns>
         List<ComentarioEvento> ListarTodos();
+
+        List<ComentarioEvento> ListarSomenteExibe();
     }
 }

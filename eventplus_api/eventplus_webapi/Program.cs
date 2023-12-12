@@ -1,3 +1,4 @@
+using Microsoft.Azure.CognitiveServices.ContentModerator;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -96,10 +97,20 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddCors(options => {
     options.AddPolicy(name: "MyPolicy",
     policy => {
-        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        policy
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
     }   
     );
 });
+
+builder.Services.AddSingleton(provider => new ContentModeratorClient(
+        new ApiKeyServiceClientCredentials("015a3091484a4f2294aba8db95aaf320"))
+{
+    Endpoint = "https://eventplusmoderator-guilherme.cognitiveservices.azure.com/"
+}
+);
 
 var app = builder.Build();
 
