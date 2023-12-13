@@ -22,7 +22,7 @@ const Modal = ({
   useEffect(() => {
 
     async function pegarDados(){
-    const obj = await fnGet(userData.id, userData.idEvento)
+    await fnGet(userData.id, userData.idEvento)
     }
 
     pegarDados();

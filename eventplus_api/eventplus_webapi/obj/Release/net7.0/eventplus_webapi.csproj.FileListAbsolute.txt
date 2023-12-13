@@ -82,3 +82,6 @@ C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Releas
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\eventplus_webapi.pdb
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\eventplus_webapi.genruntimeconfig.cache
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\ref\eventplus_webapi.dll
+C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\bin\Release\net7.0\Microsoft.Azure.CognitiveServices.ContentModerator.dll
+C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\bin\Release\net7.0\Microsoft.Rest.ClientRuntime.dll
+C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\bin\Release\net7.0\Microsoft.Rest.ClientRuntime.Azure.dll

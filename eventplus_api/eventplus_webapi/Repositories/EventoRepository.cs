@@ -153,7 +153,24 @@ namespace eventplus_webapi.Repositories
         {
             try
             {
-                Evento eventoBuscado = _eventContext.Evento.FirstOrDefault(e => e.IdEvento == id)!;
+                Evento eventoBuscado = _eventContext.Evento.Select(e => new Evento
+                    {
+                        IdEvento = e.IdEvento,
+                        DataEvento = e.DataEvento,
+                        Nome = e.Nome,
+                        Descricao = e.Descricao,
+                        TiposEvento = new TiposEvento
+                        {
+                            IdTipoEvento = e.IdTipoEvento,
+                            Titulo = e.TiposEvento!.Titulo
+                        },
+                        IdInstituicao = e.IdInstituicao,
+                        Instituicao = new Instituicao
+                        {
+                            IdInstituicao = e.IdInstituicao,
+                            NomeFantasia = e.Instituicao!.NomeFantasia
+                        }
+                    }).FirstOrDefault(e => e.IdEvento == id)!;
 
                 if (eventoBuscado == null)
                 {

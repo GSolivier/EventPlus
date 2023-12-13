@@ -11,6 +11,7 @@ import Footer from '../components/Footer/Footer';
 import LoginPage from '../pages/Login/Login';
 import { PrivateRoute } from './PrivateRoute';
 import EventosAlunoPage from '../pages/EventosAluno/EventosAluno';
+import DetalhesEvento from '../pages/DetalhesEvento/DetalhesEvento';
 
 const Rotas = () => {
     return (
@@ -47,6 +48,7 @@ const Rotas = () => {
                     }
                     exact />
                 <Route element={<LoginPage />} path='/login' exact />
+                <Route element={<DetalhesEvento />} path='/detalhes-evento'/>
             </Routes>
 
             <Footer />

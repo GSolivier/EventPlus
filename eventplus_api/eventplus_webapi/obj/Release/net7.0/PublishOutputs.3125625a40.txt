@@ -11,6 +11,7 @@ C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Releas
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.Azure.CognitiveServices.ContentModerator.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
@@ -26,6 +27,8 @@ C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Releas
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.Rest.ClientRuntime.dll
+C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.Rest.ClientRuntime.Azure.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 C:\Users\42634177801\Desktop\EventPlus\eventplus_api\eventplus_webapi\obj\Release\net7.0\PubTmp\Out\Newtonsoft.Json.dll
