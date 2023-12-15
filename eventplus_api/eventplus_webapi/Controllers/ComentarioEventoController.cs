@@ -106,12 +106,12 @@ namespace eventplus_webapi.Controllers
             }
         }
 
-        [HttpGet("ListarSomenteExibe")]
-        public IActionResult GetExibe()
+        [HttpGet("ListarSomenteExibe/{idEvento}")]
+        public IActionResult GetExibe(Guid idEvento)
         {
             try
             {
-                return Ok(_comentarioEventoRepository.ListarSomenteExibe());
+                return Ok(_comentarioEventoRepository.ListarSomenteExibe(idEvento));
             }
             catch (Exception erro)
             {

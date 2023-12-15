@@ -5,7 +5,7 @@ import TableEvA from "./TableEvA/TableEvA";
 import Container from "../../components/Container/Container";
 import { Select } from "../../components/FormComponents/FormComponents";
 import Modal from "../../components/Modal/Modal";
-import api, { commentsResource, eventsResource, presencasEvento } from "../../Services/Service";
+import api, { commentsResource, eventsResource, postCommentResource, presencasEvento } from "../../Services/Service";
 
 import "./EventosAluno.css";
 import { UserContext } from "../../context/AuthContext";
@@ -88,7 +88,7 @@ const EventosAlunoPage = () => {
   async function postMyComentary() {
 
     if (comentario === "Não informado." || comentario === "Comentario deletado!") {
-      await api.post(commentsResource, {
+      await api.post(`${commentsResource}${postCommentResource}`, {
         descricao: novoComentario,
         exibe: true,
         idUsuario: userData.id,

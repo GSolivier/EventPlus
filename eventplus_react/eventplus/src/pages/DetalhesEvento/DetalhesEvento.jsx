@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import api, { eventsResource } from '../../Services/Service';
+import api, { commentsResource, eventsResource, onlyTrue } from '../../Services/Service';
 import Notification from '../../components/Notification/Notification';
 import Container from '../../components/Container/Container';
 import Titulo from '../../components/Titulo/Titulo';
@@ -13,6 +13,8 @@ const DetalhesEvento = () => {
 
     const [idEvento, setIdEvento] = useState("")
     const [eventoSelecionado, setEventoSelecionado] = useState({})
+    const [tipoEvento, setTipoEvento] = useState("")
+    const [comentarios, setComentarios] = useState([])
 
     const { userData, setUserData } = useContext(UserContext);
 
@@ -51,33 +53,51 @@ const DetalhesEvento = () => {
 
     async function openDetails(idEvento) {
 
-        setIdEvento(idEvento)
+        try {
+            
+            setEventoSelecionado({})
+            setTipoEvento("")
+            
 
-        const retorno = await api.get(`${eventsResource}/${idEvento}`)
-        const dados = retorno.data
+            const retorno = await api.get(`${eventsResource}/${idEvento}`)
+            const comentarios = await api.get(`${commentsResource}${onlyTrue}/${idEvento}`)
+            const comentariosData = comentarios.data
+            const dados = retorno.data
 
-        setEventoSelecionado(dados)
-
-        console.log(eventoSelecionado);
+            console.log(comentariosData);
+    
+            setEventoSelecionado(dados)
+            setComentarios(comentariosData)
+            setTipoEvento(dados.tiposEvento.titulo)
+            setIdEvento(idEvento)
+        } catch (error) {
+            
+        }
     }
 
     return (
         <>
             <Notification {...notifyUser} setNotifyUser={setNotifyUser} />
 
-            <section className="lista-eventos-section">
-                <Container>
+            
+                
                     {idEvento === ""
                         ? <>
+                        <section className="lista-eventos-section">
+                        <Container>
                             <Titulo titleText={"Lista de Eventos"} color='white' />
                             <TableDet
                                 dados={eventos}
                                 fnDetails={openDetails}
                             />
+                        </Container>
+                        </section>
                         </>
                         :
 
                         <div>
+                            <section className="lista-eventos-section">
+                            <Container>
                             <Titulo titleText={eventoSelecionado.nome} color='white'/>
                             <button onClick={() => setIdEvento("")}>voltar</button>
                             
@@ -85,18 +105,21 @@ const DetalhesEvento = () => {
                             <p>{eventoSelecionado.descricao}</p>
 
                             <h1>Tipo do evento</h1>
-                                {/* <p>{eventoSelecionado.tiposEvento.titulo}</p> */}
+                                <p>{tipoEvento}</p>
 
                             <h1>Data</h1>
                             <p>{dateFormatDbToViewSimple(eventoSelecionado.dataEvento)}</p>
-                            
+                            </Container>
+                            </section>
+                                    
                         </div>
+                        
 
                     }
 
-                </Container>
+                
 
-            </section>
+            
         </>
     );
 };

@@ -45,6 +45,6 @@ namespace eventplus_webapi.Interfaces
         /// <returns>retorna uma lista com os objetos</returns>
         List<ComentarioEvento> ListarTodos();
 
-        List<ComentarioEvento> ListarSomenteExibe();
+        List<ComentarioEvento> ListarSomenteExibe(Guid idEvento);
     }
 }

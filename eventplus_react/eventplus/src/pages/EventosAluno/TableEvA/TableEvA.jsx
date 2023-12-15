@@ -14,12 +14,6 @@ const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
           <th className="tbal-data__head-title tbal-data__head-title--big">
             Evento
           </th>
-          {/* <th className="tbal-data__head-title tbal-data__head-title--big">
-            Descrição
-          </th> */}
-          {/* <th className="tbal-data__head-title tbal-data__head-title--big">
-            Tipo
-          </th> */}
           <th className="tbal-data__head-title tbal-data__head-title--big">
             Data
           </th>
@@ -35,23 +29,7 @@ const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
               <td className="tbal-data__data tbal-data__data--big">
                 {e.nome}
               </td>
-              {/* <td
-                className="tbal-data__data tbal-data__data--big tbal-data__data--handover"
-                data-tooltip-id="description-tooltip"
-                data-tooltip-content={e.descricao}
-                data-tooltip-place="top"
-              >
-                {e.descricao.substr(0, 15)} ...
-                <Tooltip
-                  id="description-tooltip"
-                  className="custom-tootip"
-                />
-              </td> */}
-              {/* <td className="tbal-data__data tbal-data__data--big">
-                {e.tiposEvento.titulo}
-              </td> */}
               <td className="tbal-data__data tbal-data__data--big tbal-data__btn-actions">
-                {/* {e.dataEvento} */}
                 {dateFormatDbToView(e.dataEvento)}
               </td>
 

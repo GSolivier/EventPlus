@@ -102,10 +102,19 @@
         }
       }
     },
-    "/api/ComentarioEvento/ListarSomenteExibe": {
+    "/api/ComentarioEvento/ListarSomenteExibe/{idEvento}": {
       "get": {
         "tags": [
           "ComentarioEvento"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idEvento",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
         ],
         "responses": {
           "200": {
